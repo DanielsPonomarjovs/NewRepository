@@ -1,0 +1,93 @@
+Final:
+                Console.WriteLine("Enter how many days ago " + blankPatient.name + " got first dose of vaccination");
+                blankPatient.firstInjectionAgo = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Tell us vaccine by which was " + blankPatient.name + " FIRST vaccination dose?");
+            Final2:
+                Console.WriteLine("(Choose first vaccine:" + "\n" + "1. Pfizer" + "\n" + "2. Moderna" + "\n" + "3. Astra-Zeneca" + "\n" + "4. Back ");
+                blankPatient.firstVaccineDose = Convert.ToInt32(Console.ReadLine());
+                switch (blankPatient.firstVaccineDose)
+                {
+                    case 1: //
+                        if (blankPatient.age > 65 || blankPatient.age < 26)
+                        {
+                            if (blankPatient.firstInjectionAgo >= 21)
+                            {
+                                Console.WriteLine("It is time to get PFIZER, go the vaccination point");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wait " + (21 - blankPatient.firstInjectionAgo) + " days for your second dose of vaccine by PFIZER ");
+                            }
+                        }
+                        else
+                        {
+                            if (blankPatient.firstInjectionAgo >= 28)
+                            {
+                                Console.WriteLine("Today is the best time to get second dose of vaccine by MODERNA");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wait " + (28 - blankPatient.firstInjectionAgo) + " days to get second dose of vaccine by MODERNA");
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        if (blankPatient.age > 65 || blankPatient.age < 26)
+                        {
+                            if (blankPatient.firstInjectionAgo >= 21)
+                            {
+                                Console.WriteLine("It is time to get second dose of vaccine by Pfizer");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wait" + (21 - blankPatient.firstInjectionAgo) + " days to get second dose of vaccine by by PFIZER");
+                            }
+                        }
+                        else
+                        {
+                            if (blankPatient.firstInjectionAgo >= 28)
+                            {
+                                Console.WriteLine("It is time to get second dose of vaccine by MODENRA, go the vaccination point");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wait " + (28 - blankPatient.firstInjectionAgo) + " days for your second dose of vaccine by PFIZER ");
+                            }
+
+                        }
+                        break;
+
+                    case 3:
+                        if (blankPatient.age >= 18)
+                        {
+                            if (blankPatient.firstInjectionAgo >= 14)
+                            {
+                                if (blankPatient.age < 26 || blankPatient.age > 65)
+                                {
+                                    Console.WriteLine("You can get second dose of vaccine by PFIZER or Astra-Zeneca, go the vaccination point");
+                                }
+                                else if (blankPatient.age > 65)
+                                {
+                                    Console.WriteLine("You can get Moderna or Astra-Zeneca vaccines, but the best for you is Pfizer");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("You should wait " + (14 - blankPatient.firstInjectionAgo) + "days and come to revaccination.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("You can get second dose of vaccine by PFIZER, go the vaccination point");
+                        }
+                        break;
+
+                    case 4:
+                        goto Final;
+
+                    default:
+                        Console.WriteLine("Wrong answer");
+                        goto Final2;
+                }
+                break;

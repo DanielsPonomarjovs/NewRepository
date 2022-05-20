@@ -1,0 +1,433 @@
+	/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS,u JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+using System;
+public enum Vaccine
+{
+    Pfizer = 1,
+    Moderna,
+    AstraZeneca,
+    JohnsonJohnson,
+}
+
+public class Patient
+{
+    public int userPressed;
+    public int firstInjectionAgo;
+    public int finalInjectionAgo;
+    public int age;
+    public int lastPositive;
+    public int firstVaccineDose;
+    public int finalVaccineDose;
+    public int userStatus;
+    public int startQuestion;
+    public string? name;
+    public string? surname;
+    public int dateofbirth;
+}
+
+class HelloWorld
+{
+    static void Main()
+
+    {
+    
+        Current:
+        Console.WriteLine("             =================================================================================");
+        Console.WriteLine("                                                    WELCOME                                   ");
+        Console.WriteLine("             _________________________________________________________________________________");
+        Console.WriteLine("             Answer on our questions - be healthy and be aware of patient's vaccination status");
+        Console.WriteLine("             =================================================================================");
+        Console.WriteLine("                                     Choose manipulation:");
+        Console.WriteLine("                                     1. Insert information of new patient");
+        Console.WriteLine("                                     2. Look at already added information");
+        Console.WriteLine("                                     3. Quit");
+        Patient cardPatient = new Patient();
+        cardPatient.startQuestion = Convert.ToInt32(Console.ReadLine());
+        switch (cardPatient.startQuestion)
+        {
+            case 1: goto Opros;
+            case 2:
+                Console.WriteLine("                                     Choose patient in who you are intersted in:");
+                                                                        //List of entered patients
+
+
+                Console.WriteLine("                                     ============================================================");
+                Console.WriteLine("                                     Status of health: 1. Priority group 2. Healthy group - " + cardPatient.userPressed);
+                Console.WriteLine("                                     First vaccination was - " + cardPatient.firstInjectionAgo + " days ago");
+                Console.WriteLine("                                     Second dose was  - " + cardPatient.finalInjectionAgo + " days ago");
+                Console.WriteLine("                                     Patient age - " + cardPatient.age);
+                Console.WriteLine("                                     Weeks past after positive PCR-Test - " + cardPatient.lastPositive);
+                Console.WriteLine("                                     First vaccine was - " + cardPatient.firstVaccineDose);
+                Console.WriteLine("                                     Second vaccine was - " + cardPatient.finalVaccineDose);
+                Console.WriteLine("                                     Status of certificate - " + cardPatient.userStatus);
+                Console.WriteLine("                                     ============================================================");
+            exit:
+                Console.WriteLine("                                     Press 1. to exit:");
+                Console.WriteLine("                                     1. Exit");
+                int option;
+                option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1: goto Current;
+                    default: Console.WriteLine("Wrong answer"); goto exit;
+                }
+
+            case 3: goto Current;
+            default: Console.WriteLine("Wrong character!"); goto Current;
+        }
+    Opros:
+        
+        Console.WriteLine("Enter name of patient:");
+        cardPatient.name = Console.ReadLine();
+        Console.WriteLine("Enter surname of patient:");
+        cardPatient.surname = Console.ReadLine();
+        Console.WriteLine("Enter year of birth");
+        cardPatient.dateofbirth = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("____________________________________________________________________________________________________________");
+        Console.WriteLine(" We are interested in patient's HEALTH STATUS, is he in priority group and status of his vaccination course");
+        Console.WriteLine("____________________________________________________________________________________________________________");
+        Console.WriteLine(" ");
+        Console.WriteLine("                                               ==========================================");
+        Console.WriteLine("- Older than 65?" + "\n" + "- Works in health care system?" + "\n" + "- Older than 50 with chronic illness?" + "\n" + "- SAC client?");
+        Console.WriteLine("==========================================");
+        Start:
+        Console.WriteLine("__________________________________________");
+        Console.WriteLine("Choose:");
+        Console.WriteLine(" 1. Healthy group / 2. Priority group "); 
+        Console.WriteLine("                                               __________________________________________");
+
+        bool isInList = false;
+        cardPatient.userPressed = Convert.ToInt32(Console.ReadLine());
+        switch (cardPatient.userPressed)
+        {
+            case 1: isInList = true; break;
+            case 2: isInList = false; break;
+            default: Console.WriteLine("Wrong character!"); goto Start;
+        }
+
+        Console.WriteLine("Enter age of patient:");
+        cardPatient.age = Convert.ToInt32(Console.ReadLine());
+        Begin:
+        Console.WriteLine("Enter status of vaccination:");
+        Console.WriteLine("-----------------------------------------------");
+        Console.WriteLine(" Choose from 1 to 5:" + "\n" + "1. Patient never had vaccination" + "\n" + "2. Patient have received a HALF of primary vaccination course" + "\n" + "3. Patient have received a FULL primary vaccination course" + "\n" + "4. Patient was sick of covid and never had vaccination" + "\n" + "5. Back");
+        Console.WriteLine("-----------------------------------------------");
+        cardPatient.userStatus = Convert.ToInt32(Console.ReadLine());
+        switch (cardPatient.userStatus)
+        {
+            case 1:
+                if (cardPatient.age < 25 || cardPatient.age > 65)
+                {
+                    if (cardPatient.age > 12)
+                    {
+                        Console.WriteLine(cardPatient.name + " should be vaccinated by Pfizer");
+                    }
+                    else
+                    {
+                        Console.WriteLine(cardPatient.name + " is too young for vaccination come here when" + cardPatient.name + "is atleast 12 years old");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(cardPatient.name + " should be vaccinated by Moderna");
+                }
+                break;
+
+            case 2:
+            Final:
+                Console.WriteLine("Enter how many days ago " + cardPatient.name + " got first dose of vaccination");
+                cardPatient.firstInjectionAgo = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Tell us vaccine by which was " + cardPatient.name + " FIRST vaccination dose?");
+            Final2:
+                Console.WriteLine("(Choose first vaccine:" + "\n" + "1. Pfizer" + "\n" + "2. Moderna" + "\n" + "3. Astra-Zeneca" + "\n" + "4. Back ");
+                cardPatient.firstVaccineDose = Convert.ToInt32(Console.ReadLine());
+                switch (cardPatient.firstVaccineDose)
+                {
+                    case 1: //
+                        if (cardPatient.age > 65 || cardPatient.age < 26)
+                        {
+                            if (cardPatient.firstInjectionAgo >= 21)
+                            {
+                                Console.WriteLine("It is time to get PFIZER, go the vaccination point");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wait " + (21 - cardPatient.firstInjectionAgo) + " days for your second dose of vaccine by PFIZER ");
+                            }
+                        }
+                        else
+                        {
+                            if (cardPatient.firstInjectionAgo >= 28)
+                            {
+                                Console.WriteLine("Today is the best time to get second dose of vaccine by MODERNA");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wait " + (28 - cardPatient.firstInjectionAgo) + " days to get second dose of vaccine by MODERNA");
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        if (cardPatient.age > 65 || cardPatient.age < 26)
+                        {
+                            if (cardPatient.firstInjectionAgo >= 21)
+                            {
+                                Console.WriteLine("It is time to get second dose of vaccine by Pfizer");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wait" + (21 - cardPatient.firstInjectionAgo) + " days to get second dose of vaccine by by PFIZER");
+                            }
+                        }
+                        else
+                        {
+                            if (cardPatient.firstInjectionAgo >= 28)
+                            {
+                                Console.WriteLine("It is time to get second dose of vaccine by MODENRA, go the vaccination point");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Wait " + (28 - cardPatient.firstInjectionAgo) + " days for your second dose of vaccine by PFIZER ");
+                            }
+
+                        }
+                        break;
+
+                    case 3:
+                        if (cardPatient.age >= 18)
+                        {
+                            if (cardPatient.firstInjectionAgo >= 14)
+                            {
+                                if (cardPatient.age < 26 || cardPatient.age > 65)
+                                {
+                                    Console.WriteLine("You can get second dose of vaccine by PFIZER or Astra-Zeneca, go the vaccination point");
+                                }
+                                else if (cardPatient.age > 65)
+                                {
+                                    Console.WriteLine("You can get Moderna or Astra-Zeneca vaccines, but the best for you is Pfizer");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("You should wait " + (14 - cardPatient.firstInjectionAgo) + "days and come to revaccination.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("You can get second dose of vaccine by PFIZER, go the vaccination point");
+                        }
+                        break;
+
+                    case 4:
+                        goto Final;
+
+                    default:
+                        Console.WriteLine("Wrong answer");
+                        goto Final2;
+                }
+                break;
+
+            case 3:
+                Console.WriteLine("Tell us how many days ago " + cardPatient.name + " received FINAL dose?");
+                cardPatient.finalInjectionAgo = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Tell us vaccine by which " + cardPatient.name + " had his first vaccination dose");
+                Console.WriteLine("(Choose first vaccine: " + "\n" + "1. Pfizer" + "\n" + "2. Moderna" + "\n" + "3. Astra-Zeneca" + "\n" + "4. Johnson&Johnson ");
+                cardPatient.firstVaccineDose = Convert.ToInt32(Console.ReadLine());
+            Second:
+                Console.WriteLine("Tell us vaccine by which " + cardPatient.name + " had his second vaccination dose");
+                Console.WriteLine("(Choose first vaccine: " + "\n" + "1. Pfizer" + "\n" + "2. Moderna" + "\n" + "3. Astra-Zeneca" + "\n" + "4. He had only one dose by Johnson&Johnson");
+                cardPatient.finalVaccineDose = Convert.ToInt32(Console.ReadLine());
+                switch (cardPatient.firstVaccineDose)
+                {
+                    case 1:
+                        switch (cardPatient.finalVaccineDose)
+                        {
+                            case 1:
+                                Console.WriteLine(cardPatient.name + "has combination of Pfizer + Pfizer");
+                                if (isInList)
+                                {
+                                    if (cardPatient.finalInjectionAgo > 180)
+                                    {
+                                        Console.WriteLine("You can get balstvaccine or 3 vaccine. Pfizer or in case of missing Pfizer, you can get half dose of Moderna");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Pfizer/Pfizer balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 6. mēnešiem.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Uz balstvakcīnu pretendē tikai prioritāras grupas.");
+                                }
+                                break;
+
+                            case 2: Console.WriteLine("There are some troubles of patient past. Go to your family doctor and then come back. We can't understand combination of his vaccines."); break;
+                            case 3: Console.WriteLine("There are some troubles of patient past. Go to your family doctor and then come back. We can't understand combination of his vaccines."); break;
+                            default: Console.WriteLine("Wrong answer"); break;
+                        }
+                        break;
+
+                    case 2:
+                        switch (cardPatient.finalVaccineDose)
+                        {
+                            case 1: Console.WriteLine("There are some troubles of " + cardPatient.name + " past. He should go to his family doctor and then come back. We can't understand combination of his vaccines."); break;
+                            case 2:
+                                Console.WriteLine(cardPatient.name + " has combination of Moderna + Moderna");
+                                if (isInList)
+                                {
+                                    if (cardPatient.finalInjectionAgo > 180)
+                                    {
+                                        Console.WriteLine("You can get balstvaccine or 3 vaccine. Half dose of Moderna or in case of missing Moderna, you can get Pfizer");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Moderna/Moderna balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 6. mēnešiem.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Uz balstvakcīnu pretendē tikai prioritāras grupas.");
+                                }
+                                break;
+                            case 3:
+                                Console.WriteLine("There are some troubles of yur past. Go to your family doctor and then come back. We can't understand combination of his vaccines. ( Moderna + Astra-Zeneca)"); break;
+                            default: Console.WriteLine("Wrong answer"); break;
+                        }
+                        break;
+
+                    case 3:
+                        switch (cardPatient.finalVaccineDose)
+                        {
+                            case 1:
+                                Console.WriteLine(cardPatient.name + " has combination of Astra -Zeneca + Pfizer");
+                                if (isInList)
+                                {
+                                    if (cardPatient.finalInjectionAgo > 180)
+                                    {
+                                        Console.WriteLine("You are possible to get Moderna(full) or in case of missing Moderna you can get Pfizer");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Astrazeneka-Pfizer/Moderna balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 6. mēnešiem.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Uz balstvakcīnu pretendē tikai prioritāras grupas.");
+                                }
+                                break;
+
+                            case 2:
+                                Console.WriteLine(cardPatient.name + " has combination of Astra -Zeneca + Moderna");
+                                if (isInList)
+                                {
+                                    if (cardPatient.finalInjectionAgo > 180)
+                                    {
+                                        Console.WriteLine("You are possible to get Moderna(full) or in case of missing Moderna you can get Pfizer");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Astrazeneka-Pfizer/Moderna balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 6. mēnešiem.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Uz balstvakcīnu pretendē tikai prioritāras grupas.");
+                                }
+                                break;
+
+
+                            case 3:
+                                Console.WriteLine(cardPatient.name + " has combination of Astra -Zeneca + Astra-Zeneca");
+
+                                if (isInList)
+                                {
+                                    if (cardPatient.finalInjectionAgo > 180)
+                                    {
+                                        Console.WriteLine("You are possible to get Moderna(full) or in case of missing Moderna you can get Pfizer/Astrazeneka.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Astrazeneka-Astrazeneka balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 6. mēnešiem.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Uz balstvakcīnu pretendē tikai prioritāras grupas.");
+                                }
+
+                                break;
+
+
+
+                            case 4:
+                                Console.WriteLine("JohnsonJohnson");
+                                if (cardPatient.age > 18)
+                                {
+                                    if (cardPatient.finalInjectionAgo > 60)
+                                    {
+                                        Console.WriteLine("You are possible to get Moderna(full) or in case of missing Moderna you can get Pfizer");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Johnson&Johnson balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 8 nedēļam.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Pēc Johnson&Johnson balstvakcīnu var saņemt tikai no 18 gadiem.");
+                                }
+
+                                break;
+
+                            default:
+                                Console.WriteLine("Wrong answer");
+                                break;
+                        }
+                        break;
+                    case 4:
+                        Console.WriteLine("Johnson&Jonson");
+                        break;
+
+                    default: Console.WriteLine("Wrong Answer"); goto Second;
+                }
+                break;
+
+            case 4:
+            Positive1:
+                Console.WriteLine("Tell us how many weeks ago you had COVID-19 positive result?");
+                cardPatient.lastPositive = Convert.ToInt32(Console.ReadLine());
+                if (cardPatient.lastPositive < 6)
+                {
+                    Console.WriteLine("Wait " + (6 - cardPatient.lastPositive) + " months, because at the moment " + cardPatient.name + " has green COVID sertificate.");
+                }
+                else
+                {
+                    Console.WriteLine("It's time to get vaccinated, because " + cardPatient.name + " is not in safe status already.");
+
+                }
+                break;
+
+            case 5:
+                goto Begin;
+
+
+            default:
+                Console.WriteLine("Wrong answer");
+                goto Positive1;
+            }
+         }
+        }
+
+
+
+
+
+

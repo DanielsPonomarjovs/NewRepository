@@ -1,0 +1,164 @@
+Console.WriteLine("Tell us how many days ago " + blankPatient.name + " received FINAL dose?");
+                blankPatient.finalInjectionAgo = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Tell us vaccine by which " + blankPatient.name + " had his first vaccination dose");
+                Console.WriteLine("(Choose first vaccine: " + "\n" + "1. Pfizer" + "\n" + "2. Moderna" + "\n" + "3. Astra-Zeneca" + "\n" + "4. Johnson&Johnson ");
+                blankPatient.firstVaccineDose = Convert.ToInt32(Console.ReadLine());
+            Second:
+                Console.WriteLine("Tell us vaccine by which " + blankPatient.name + " had his second vaccination dose");
+                Console.WriteLine("(Choose first vaccine: " + "\n" + "1. Pfizer" + "\n" + "2. Moderna" + "\n" + "3. Astra-Zeneca" + "\n" + "4. He had only one dose by Johnson&Johnson");
+                blankPatient.finalVaccineDose = Convert.ToInt32(Console.ReadLine());
+                switch (blankPatient.firstVaccineDose)
+                {
+                    case 1:
+                        switch (blankPatient.finalVaccineDose)
+                        {
+                            case 1:
+                                Console.WriteLine(blankPatient.name + "has combination of Pfizer + Pfizer");
+                                if (isInList)
+                                {
+                                    if (blankPatient.finalInjectionAgo > 180)
+                                    {
+                                        Console.WriteLine("You can get balstvaccine or 3 vaccine. Pfizer or in case of missing Pfizer, you can get half dose of Moderna");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Pfizer/Pfizer balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 6. mēnešiem.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Uz balstvakcīnu pretendē tikai prioritāras grupas.");
+                                }
+                                break;
+
+                            case 2: Console.WriteLine("There are some troubles of patient past. Go to your family doctor and then come back. We can't understand combination of his vaccines."); break;
+                            case 3: Console.WriteLine("There are some troubles of patient past. Go to your family doctor and then come back. We can't understand combination of his vaccines."); break;
+                            default: Console.WriteLine("Wrong answer"); break;
+                        }
+                        break;
+
+                    case 2:
+                        switch (blankPatient.finalVaccineDose)
+                        {
+                            case 1: Console.WriteLine("There are some troubles of " + blankPatient.name + " past. He should go to his family doctor and then come back. We can't understand combination of his vaccines."); break;
+                            case 2:
+                                Console.WriteLine(blankPatient.name + " has combination of Moderna + Moderna");
+                                if (isInList)
+                                {
+                                    if (blankPatient.finalInjectionAgo > 180)
+                                    {
+                                        Console.WriteLine("You can get balstvaccine or 3 vaccine. Half dose of Moderna or in case of missing Moderna, you can get Pfizer");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Moderna/Moderna balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 6. mēnešiem.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Uz balstvakcīnu pretendē tikai prioritāras grupas.");
+                                }
+                                break;
+                            case 3:
+                                Console.WriteLine("There are some troubles of yur past. Go to your family doctor and then come back. We can't understand combination of his vaccines. ( Moderna + Astra-Zeneca)"); break;
+                            default: Console.WriteLine("Wrong answer"); break;
+                        }
+                        break;
+
+                    case 3:
+                        switch (blankPatient.finalVaccineDose)
+                        {
+                            case 1:
+                                Console.WriteLine(blankPatient.name + " has combination of Astra -Zeneca + Pfizer");
+                                if (isInList)
+                                {
+                                    if (blankPatient.finalInjectionAgo > 180)
+                                    {
+                                        Console.WriteLine("You are possible to get Moderna(full) or in case of missing Moderna you can get Pfizer");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Astrazeneka-Pfizer/Moderna balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 6. mēnešiem.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Uz balstvakcīnu pretendē tikai prioritāras grupas.");
+                                }
+                                break;
+
+                            case 2:
+                                Console.WriteLine(blankPatient.name + " has combination of Astra -Zeneca + Moderna");
+                                if (isInList)
+                                {
+                                    if (blankPatient.finalInjectionAgo > 180)
+                                    {
+                                        Console.WriteLine("You are possible to get Moderna(full) or in case of missing Moderna you can get Pfizer");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Astrazeneka-Pfizer/Moderna balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 6. mēnešiem.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Uz balstvakcīnu pretendē tikai prioritāras grupas.");
+                                }
+                                break;
+
+
+                            case 3:
+                                Console.WriteLine(blankPatient.name + " has combination of Astra -Zeneca + Astra-Zeneca");
+
+                                if (isInList)
+                                {
+                                    if (blankPatient.finalInjectionAgo > 180)
+                                    {
+                                        Console.WriteLine("You are possible to get Moderna(full) or in case of missing Moderna you can get Pfizer/Astrazeneka.");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Astrazeneka-Astrazeneka balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 6. mēnešiem.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Uz balstvakcīnu pretendē tikai prioritāras grupas.");
+                                }
+
+                                break;
+
+
+
+                            case 4:
+                                Console.WriteLine("JohnsonJohnson");
+                                if (blankPatient.age > 18)
+                                {
+                                    if (blankPatient.finalInjectionAgo > 60)
+                                    {
+                                        Console.WriteLine("You are possible to get Moderna(full) or in case of missing Moderna you can get Pfizer");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Pēc Johnson&Johnson balstvakcīnu var saņemt tikai no pēc minimāla termiņa pēc primāras vakcinācijas - pēc 8 nedēļam.");
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Nevar saņemt baltvakcīnu vai 3. poti: Pēc Johnson&Johnson balstvakcīnu var saņemt tikai no 18 gadiem.");
+                                }
+
+                                break;
+
+                            default:
+                                Console.WriteLine("Wrong answer");
+                                break;
+                        }
+                        break;
+                    case 4:
+                        Console.WriteLine("Johnson&Jonson");
+                        break;
+
+                    default: Console.WriteLine("Wrong Answer"); goto Second;
+                }
+                break;

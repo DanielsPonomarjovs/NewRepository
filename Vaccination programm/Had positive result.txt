@@ -1,0 +1,11 @@
+ Console.WriteLine("Tell us how many weeks ago you had COVID-19 positive result?");
+                blankPatient.lastPositive = Convert.ToInt32(Console.ReadLine());
+                if (blankPatient.lastPositive < 6)
+                {
+                    Console.WriteLine("Wait " + (6 - blankPatient.lastPositive) + " months, because at the moment " + blankPatient.name + " has green COVID sertificate.");
+                }
+                else
+                {
+                    Console.WriteLine("It's time to get vaccinated, because " + blankPatient.name + " is not in safe status already.");
+
+                }

@@ -1,0 +1,15 @@
+public class Patient
+{
+    public int userPressed;
+    public int firstInjectionAgo;
+    public int finalInjectionAgo;
+    public int age;
+    public int lastPositive;
+    public int firstVaccineDose;
+    public int finalVaccineDose;
+    public int userStatus;
+    public int startQuestion;
+    public string? name;
+    public string? surname;
+    public int dateofbirth;
+}

@@ -1,0 +1,84 @@
+
+        Current:
+        Console.WriteLine("             =================================================================================");
+        Console.WriteLine("                                                    WELCOME                                   ");
+        Console.WriteLine("             _________________________________________________________________________________");
+        Console.WriteLine("             Answer on our questions - be healthy and be aware of patient's vaccination status");
+        Console.WriteLine("             =================================================================================");
+        Console.WriteLine("                                     Choose manipulation:");
+        Console.WriteLine("                                     1. Insert information of new patient");
+        Console.WriteLine("                                     2. Look at already added information");
+        Console.WriteLine("                                     3. Quit");
+        Patient blankPatient = new Patient();
+        blankPatient.startQuestion = Convert.ToInt32(Console.ReadLine());
+        switch (blankPatient.startQuestion)
+        {
+            case 1: goto Opros;
+            case 2:
+                Console.WriteLine("                                     Choose patient in who you are intersted in:");
+                                                                        //List of entered patients
+
+
+                Console.WriteLine("                                     ============================================================");
+                Console.WriteLine("                                     Status of health: 1. Priority group 2. Healthy group - " + blankPatient.userPressed);
+                Console.WriteLine("                                     First vaccination was - " + blankPatient.firstInjectionAgo + " days ago");
+                Console.WriteLine("                                     Second dose was  - " + blankPatient.finalInjectionAgo + " days ago");
+                Console.WriteLine("                                     Patient age - " + blankPatient.age);
+                Console.WriteLine("                                     Weeks past after positive PCR-Test - " + blankPatient.lastPositive);
+                Console.WriteLine("                                     First vaccine was - " + blankPatient.firstVaccineDose);
+                Console.WriteLine("                                     Second vaccine was - " + blankPatient.finalVaccineDose);
+                Console.WriteLine("                                     Status of certificate - " + blankPatient.userStatus);
+                Console.WriteLine("                                     ============================================================");
+            exit:
+                Console.WriteLine("                                     Press 1. to exit:");
+                Console.WriteLine("                                     1. Exit");
+                int option;
+                option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1: goto Current;
+                    default: Console.WriteLine("Wrong answer"); goto exit;
+                }
+
+            case 3: goto Current;
+            default: Console.WriteLine("Wrong character!"); goto Current;
+        }
+    Opros:
+        
+        Console.WriteLine("Enter name of patient:");
+        blankPatient.name = Console.ReadLine();
+        Console.WriteLine("Enter surname of patient:");
+        blankPatient.surname = Console.ReadLine();
+        Console.WriteLine("Enter year of birth");
+        blankPatient.dateofbirth = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("____________________________________________________________________________________________________________");
+        Console.WriteLine(" We are interested in patient's HEALTH STATUS, is he in priority group and status of his vaccination course");
+        Console.WriteLine("____________________________________________________________________________________________________________");
+        Console.WriteLine(" ");
+        Console.WriteLine("                                               ==========================================");
+        Console.WriteLine("- Older than 65?" + "\n" + "- Works in health care system?" + "\n" + "- Older than 50 with chronic illness?" + "\n" + "- SAC client?");
+        Console.WriteLine("==========================================");
+        Start:
+        Console.WriteLine("__________________________________________");
+        Console.WriteLine("Choose:");
+        Console.WriteLine(" 1. Healthy group / 2. Priority group "); 
+        Console.WriteLine("                                               __________________________________________");
+
+        bool isInList = false;
+        blankPatient.userPressed = Convert.ToInt32(Console.ReadLine());
+        switch (blankPatient.userPressed)
+        {
+            case 1: isInList = true; break;
+            case 2: isInList = false; break;
+            default: Console.WriteLine("Wrong character!"); goto Start;
+        }
+
+        Console.WriteLine("Enter age of patient:");
+        blankPatient.age = Convert.ToInt32(Console.ReadLine());
+        Begin:
+        Console.WriteLine("Enter status of vaccination:");
+        Console.WriteLine("-----------------------------------------------");
+        Console.WriteLine(" Choose from 1 to 5:" + "\n" + "1. Patient never had vaccination" + "\n" + "2. Patient have received a HALF of primary vaccination course" + "\n" + "3. Patient have received a FULL primary vaccination course" + "\n" + "4. Patient was sick of covid and never had vaccination" + "\n" + "5. Back");
+        Console.WriteLine("-----------------------------------------------");
+        blankPatient.userStatus = Convert.ToInt32(Console.ReadLine());
+        switch (blankPatient.userStatus)

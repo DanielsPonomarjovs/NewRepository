@@ -1,0 +1,16 @@
+if (blankPatient.age < 25 || blankPatient.age > 65)
+                {
+                    if (blankPatient.age > 12)
+                    {
+                        Console.WriteLine(blankPatient.name + " should be vaccinated by Pfizer");
+                    }
+                    else
+                    {
+                        Console.WriteLine(blankPatient.name + " is too young for vaccination come here when" + blankPatient.name + "is atleast 12 years old");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(blankPatient.name + " should be vaccinated by Moderna");
+                }
+                break;
